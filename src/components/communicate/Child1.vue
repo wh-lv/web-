@@ -3,6 +3,7 @@
     <h2>Child1</h2>
     <p>{{title}}</p>
     <h3>{{msg}}</h3>
+    <h4>{{c1}}</h4>
     <button @click="toParent">传递到父元素</button>
     <grand-child1></grand-child1>
     <grand-child2></grand-child2>
@@ -17,7 +18,8 @@ export default {
   components: { GrandChild1, GrandChild2 },
   data () {
     return {
-      msg: ''
+      msg: '',
+      c1: 'c1'
     }
   },
   methods: {
@@ -28,6 +30,9 @@ export default {
   mounted () {
     this.$bus.$on('event-bus', msg => {
       this.msg = '接收event-bus消息:' + msg
+    })
+    this.$parent.$on('fromC2', () => {
+      console.log('from C2')
     })
   }
 }

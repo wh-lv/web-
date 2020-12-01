@@ -4,7 +4,7 @@
     <h2>{{test}}</h2>
     <h3>{{msg}}</h3>
     <child1 :title="title1" @getmsg="getmsg"></child1>
-    <child-2></child-2>
+    <child-2 ref="c2"></child-2>
   </div>
 </template>
 
@@ -23,6 +23,11 @@ export default {
       msg: '',
       title1: 'father box'
     }
+  },
+  mounted () {
+    // 需要注意 $children 并不保证顺序，也不是响应式的
+    this.$children[0].c1 = 'new c1'
+    this.$refs.c2.c2 = 'new c2'
   },
   methods: {
     getmsg (msg) {

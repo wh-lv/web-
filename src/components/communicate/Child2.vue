@@ -1,7 +1,8 @@
 <template>
     <div class="bs">
-        <h2>Child2</h2>
+        <h2 @click="$parent.$emit('fromC2')">Child2</h2>
         <h3>{{msg}}</h3>
+        <h4>{{ c2 }}</h4>
         <grand-child1></grand-child1>
     </div>
 </template>
@@ -13,7 +14,8 @@ export default {
   props: ['title'],
   data () {
     return {
-      msg: ''
+      msg: '',
+      c2: 'c2'
     }
   },
   components: {
