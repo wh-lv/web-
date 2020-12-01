@@ -1,0 +1,37 @@
+<template>
+  <div class="home">
+    <communicate test='From Home.vue' ></communicate>
+  </div>
+</template>
+
+<script>
+import Communicate from '../components/communicate'
+
+export default {
+  name: 'Home',
+  provide () {
+    return {
+      home: 'Home.vue',
+      _data: this.baseSelf
+    }
+  },
+  components: {
+    Communicate
+  },
+  data () {
+    return {
+      tua: 'Tua',
+      baseSelf: this
+    }
+  },
+  mounted () {
+    // this.$refs.hw.foo = 'bar'
+    // this.$children[0].foo = 'dong'
+  },
+  methods: {
+    onFoo () {
+      console.log('Foo')
+    }
+  }
+}
+</script>
