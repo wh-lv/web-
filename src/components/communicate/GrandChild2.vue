@@ -6,6 +6,7 @@
         </p>
         <button @click="eventBus">$bus发布</button>
         <h3>{{msg}}</h3>
+        <h4>{{ this.$store.getters.fullInfo }}</h4>
         <grand-grand-child1></grand-grand-child1>
     </div>
 </template>

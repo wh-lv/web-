@@ -4,6 +4,7 @@
     <p>{{title}}</p>
     <h3>{{msg}}</h3>
     <h4>{{c1}}</h4>
+    <h4>{{ this.$store.getters.fullInfo }}</h4>
     <button @click="toParent">传递到父元素</button>
     <grand-child1></grand-child1>
     <grand-child2></grand-child2>

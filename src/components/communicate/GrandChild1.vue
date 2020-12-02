@@ -3,6 +3,7 @@
     <h2>Grandson1</h2>
     <p>祖先元素提供的数据 : {{woniu}}</p>
     <h3>{{msg}}</h3>
+    <h4>{{ this.$store.getters.fullInfo }}</h4>
   </div>
 </template>
 <script>
