@@ -1,13 +1,15 @@
 <template>
   <div class="home">
     <!-- <communicate test='From Home.vue' ></communicate> -->
-    <solt-demo></solt-demo>
+    <!-- <solt-demo></solt-demo> -->
+    <form-test></form-test>
   </div>
 </template>
 
 <script>
 // import Communicate from '../components/communicate'
-import SoltDemo from '../components/slots'
+// import SoltDemo from '../components/slots'
+import FormTest from '../components/form'
 
 export default {
   name: 'Home',
@@ -19,7 +21,8 @@ export default {
   },
   components: {
     // Communicate,
-    SoltDemo
+    // SoltDemo,
+    FormTest
   },
   data () {
     return {
