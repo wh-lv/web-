@@ -19,6 +19,8 @@
 import KInput from './KInput'
 import KFormItem from './KFormItem'
 import KForm from './KForm'
+import Notice from '../Notice/index'
+import create from '../../utils/create'
 export default {
   components: {
     KInput,
@@ -39,12 +41,22 @@ export default {
   },
   methods: {
     onLogin () {
+      let notice
       this.$refs.formLogin.validate((isValid) => {
         if (isValid) {
-          alert('Login...')
+          notice = create(Notice, {
+            title: 'title',
+            message: 'Login...',
+            duration: 1000
+          })
         } else {
-          alert('Error...')
+          notice = create(Notice, {
+            title: 'title',
+            message: 'Error...',
+            duration: 2000
+          })
         }
+        notice.show()
       })
     }
   }
