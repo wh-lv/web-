@@ -10,7 +10,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     name: 'tom',
-    age: 15
+    age: 15,
+    count: 0
   },
   getters: {
     nameInfo (state) {
