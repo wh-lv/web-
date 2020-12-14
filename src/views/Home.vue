@@ -14,7 +14,9 @@
         }
       ]
     }"></node> -->
-    <tree></tree>
+    <!-- <tree></tree> -->
+    <h1>首页</h1>
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 
@@ -23,7 +25,7 @@
 // import SoltDemo from '../components/slots'
 // import FormTest from '../components/form'
 // import Node from '../components/Tree/Node'
-import Tree from '../components/Tree/index'
+// import Tree from '../components/Tree/index'
 
 export default {
   name: 'Home',
@@ -38,7 +40,7 @@ export default {
     // SoltDemo,
     // FormTest,
     // Node,
-    Tree
+    // Tree,
   },
   data () {
     return {
