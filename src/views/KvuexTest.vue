@@ -12,7 +12,7 @@
 export default {
   methods: {
     add () {
-      this.$store.commit('add', 2)
+      this.$store.commit('add', 4)
     },
     async asyncAdd () {
       const result = await this.$store.dispatch('asyncAdd')

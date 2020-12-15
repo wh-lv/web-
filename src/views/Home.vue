@@ -15,10 +15,11 @@
       ]
     }"></node> -->
     <!-- <tree></tree> -->
-    <h1>首页</h1>
+    <!-- <h1>首页</h1>
     <router-view></router-view>
-    <comp></comp>
-    <vuex-test></vuex-test>
+    <comp></comp> -->
+    <!-- <vuex-test></vuex-test> -->
+    <k-vuex-test></k-vuex-test>
   </div>
 </template>
 
@@ -28,7 +29,8 @@
 // import FormTest from '../components/form'
 // import Node from '../components/Tree/Node'
 // import Tree from '../components/Tree/index'
-import VuexTest from './VuexTest.vue'
+// import VuexTest from './VuexTest.vue'
+import KVuexTest from './KvuexTest'
 
 export default {
   name: 'Home',
@@ -44,7 +46,8 @@ export default {
     // FormTest,
     // Node,
     // Tree,
-    VuexTest
+    // VuexTest,
+    KVuexTest
   },
   data () {
     return {
