@@ -1,32 +1,43 @@
-// kvue-router.js
+/**
+ * 配置 routes，生成 path 为 key，component 为 value 的键值对
+ * 监听 url 变化，把最新 hash 保存到 current 路由
+ * 实现全局组件：router-view 渲染当前匹配组件，router-link 用于修改 hash
+ * current 必须为响应式的，能够触发 router-view 的重新渲染
+ */
+
 let Vue
+
 class VueRouter {
   constructor (options) {
-    this.$options1 = options
-    this.routeMap = {}
+    this.$options = options
+    this.routesMap = {}
     this.app = new Vue({
-      data: {
-        current: '/'
+      data () {
+        return {
+          current: '/'
+        }
       }
     })
   }
 
-  // 绑定事件
   init () {
     this.bindEvents()
-    this.createRouteMap(this.$options1)
+    this.createRoutesMap(this.$options)
     this.initComponent()
   }
 
   bindEvents () {
-    window.addEventListener('load', this.onHashChange.bind(this), false)
-    window.addEventListener('hashchange', this.onHashChange.bind(this), false)
+    window.addEventListener('hashchange', this.onHashChange.bind(this))
+    window.addEventListener('load', this.onHashChange.bind(this))
   }
 
-  // 路由映射表
-  createRouteMap (options) {
+  onHashChange () {
+    this.app.current = window.location.hash.slice(1) || '/'
+  }
+
+  createRoutesMap (options) {
     options.routes.forEach(item => {
-      this.routeMap[item.path] = item
+      this.routesMap[item.path] = item
     })
   }
 
@@ -36,34 +47,23 @@ class VueRouter {
         to: String
       },
       render (h) {
-        // return <a href={this.to}>{this.$slots.default}</a>
-        return h('a', { attrs: { href: '#' + this.to } }, this.$slots.default)
+        return h('a', { attrs: { href: `#${this.to}` } }, this.$slots.default)
       }
     })
     Vue.component('router-view', {
       render: h => {
-        var component = this.routeMap[this.app.current].component
-        return h(component)
+        const Comp = this.routesMap[this.app.current].component
+        return h(Comp)
       }
     })
   }
-
-  // 设置当前路径
-  onHashChange () {
-    this.app.current = window.location.hash.slice(1) || '/'
-  }
 }
-// 插件逻辑
+
 VueRouter.install = function (_Vue) {
   Vue = _Vue
-
   Vue.mixin({
     beforeCreate () {
-      console.log('this: ', this)
       if (this.$options.router) {
-        console.log('this.$options.router: ', this.$options.router)
-        console.log('root this: ', this)
-        // 确保是根组件时执⾏⼀次，将router实例放到Vue原型，以后所有组件实例就均有$router
         Vue.prototype.$router = this.$options.router
         this.$options.router.init()
       }
