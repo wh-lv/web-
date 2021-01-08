@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <svg>
+      <use xlink:href="#icon-wx"></use>
+    </svg>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -7,6 +10,17 @@
     <router-view/>
   </div>
 </template>
+
+<script>
+import '@/icons/svg/wx.svg'
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
 
 <style lang="less">
 #app {
