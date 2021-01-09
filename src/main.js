@@ -5,6 +5,7 @@ import router from './router/krouter.js'
 // import store from './store'
 import store from './store/kindex'
 import Bus from './utils/bus'
+import './icons'
 
 Vue.prototype.$bus = new Bus()
 Vue.config.productionTip = false

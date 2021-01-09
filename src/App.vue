@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <svg>
+    <!-- <svg>
       <use xlink:href="#icon-wx"></use>
     </svg>
+    <svg><use xlink:href="#icon-qq"></use></svg> -->
+    <icon icon="wx" class-name="wx"></icon>
+    <Icon icon="qq" class-name="qq"></Icon>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -12,7 +15,7 @@
 </template>
 
 <script>
-import '@/icons/svg/wx.svg'
+// import '@/icons/svg/wx.svg'
 export default {
 
 }
