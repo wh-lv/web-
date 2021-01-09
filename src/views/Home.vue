@@ -19,7 +19,8 @@
     <router-view></router-view>
     <comp></comp> -->
     <!-- <vuex-test></vuex-test> -->
-    <k-vuex-test></k-vuex-test>
+    <!-- <k-vuex-test></k-vuex-test> -->
+    Home
   </div>
 </template>
 
@@ -30,16 +31,16 @@
 // import Node from '../components/Tree/Node'
 // import Tree from '../components/Tree/index'
 // import VuexTest from './VuexTest.vue'
-import KVuexTest from './KvuexTest'
+// import KVuexTest from './KvuexTest'
 
 export default {
   name: 'Home',
-  provide () {
-    return {
-      home: 'Home.vue',
-      _data: this.baseSelf
-    }
-  },
+  // provide () {
+  //   return {
+  //     home: 'Home.vue',
+  //     _data: this.baseSelf
+  //   }
+  // },
   components: {
     // Communicate,
     // SoltDemo,
@@ -47,7 +48,7 @@ export default {
     // Node,
     // Tree,
     // VuexTest,
-    KVuexTest
+    // KVuexTest
   },
   data () {
     return {
@@ -56,7 +57,7 @@ export default {
     }
   },
   mounted () {
-    console.log('name: ', this.$store.state.name)
+    // console.log('name: ', this.$store.state.name)
   },
   methods: {
     onFoo () {
