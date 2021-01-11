@@ -20,7 +20,9 @@
     <comp></comp> -->
     <!-- <vuex-test></vuex-test> -->
     <!-- <k-vuex-test></k-vuex-test> -->
+
     Home
+    <h1>{{ $store.state.count.count }}</h1>
   </div>
 </template>
 

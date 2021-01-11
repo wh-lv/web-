@@ -20,7 +20,7 @@ export const constRoutes = [
     redirect: '/home',
     children: [
       {
-        path: '/home',
+        path: 'home',
         component: () => import('@/views/Home'),
         name: 'Home',
         meta: {
