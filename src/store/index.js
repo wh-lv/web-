@@ -15,6 +15,10 @@ const store = new Vuex.Store({
     count: count,
     user: user,
     permission: permission
+  },
+  // 全局定义 getters 便于访问
+  getters: {
+    roles: state => state.user.roles
   }
 })
 
