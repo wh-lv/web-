@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { count } from './modules/count'
+import count from './modules/count'
 import user from './modules/user'
 import permission from './modules/permission'
 

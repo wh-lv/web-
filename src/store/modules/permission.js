@@ -23,6 +23,7 @@ function hasPermission (roles, route) {
  */
 export function filterAsyncRoutes (routes, roles) {
   const res = []
+  debugger
   routes.forEach(route => {
     // 复制一份
     const temp = { ...route }
@@ -43,7 +44,7 @@ const state = {
 }
 
 const mutations = {
-  SET_ROUTES: ({ state }, routes) => {
+  SET_ROUTES: (state, routes) => {
     state.addRoutes = routes
     state.routes = constRoutes.concat(routes)
   }
@@ -55,13 +56,13 @@ const actions = {
     return new Promise((resolve, reject) => {
       let accessRoutes
       // 用户是管理员则拥有全部权限
-      if (roles.include('damin')) {
+      if (roles.includes('admin')) {
         accessRoutes = asyncRoutes || []
       } else {
         // 否则需要通过角色做过滤处理
         accessRoutes = filterAsyncRoutes(asyncRoutes, roles)
       }
-      commit('SET_ROLES', accessRoutes)
+      commit('SET_ROUTES', accessRoutes)
       resolve(accessRoutes)
     })
   }

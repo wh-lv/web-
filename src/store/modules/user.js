@@ -15,6 +15,9 @@ const mutations = {
 }
 
 const actions = {
+  ceshi () {
+    console.log('ceshi')
+  },
   login ({ commit }, userInfo) {
     const { username } = userInfo
     return new Promise((resolve, reject) => {
@@ -50,7 +53,7 @@ const actions = {
 }
 
 export default {
-  namespace: true,
+  namespaced: true,
   state,
   mutations,
   actions
