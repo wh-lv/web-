@@ -7,7 +7,9 @@ import './permission.js'
 // import store from './store/kindex'
 import Bus from './utils/bus'
 import './icons'
+import permission from '@/directive/permission'
 
+Vue.directive('permission', permission)
 Vue.prototype.$bus = new Bus()
 Vue.config.productionTip = false
 

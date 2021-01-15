@@ -23,7 +23,6 @@ function hasPermission (roles, route) {
  */
 export function filterAsyncRoutes (routes, roles) {
   const res = []
-  debugger
   routes.forEach(route => {
     // 复制一份
     const temp = { ...route }
@@ -36,6 +35,7 @@ export function filterAsyncRoutes (routes, roles) {
       res.push(temp)
     }
   })
+  return res
 }
 
 const state = {
