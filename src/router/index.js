@@ -49,6 +49,14 @@ export const asyncRoutes = [
           // 角色决定将来哪些用户可以看到该路由
           roles: ['admin', 'editor']
         }
+      },
+      {
+        path: 'mua',
+        name: 'Mua',
+        meta: {
+          title: 'MuaMua',
+          icon: 'wx'
+        }
       }
     ]
   }
