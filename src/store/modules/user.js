@@ -1,4 +1,5 @@
 import { getToken, setToken, removeToken } from '@/utils/auth'
+import { login, getInfo } from '@/api/user'
 
 const state = {
   token: getToken(),
@@ -19,27 +20,35 @@ const actions = {
     console.log('ceshi')
   },
   login ({ commit }, userInfo) {
-    const { username } = userInfo
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (username === 'admin' || username === 'jerry') {
-          commit('SET_TOKEN', username)
-          setToken(username)
-          resolve()
-        } else {
-          reject(new Error('用户名或密码错误'))
-        }
-      }, 1000)
+    return login(userInfo).then((res) => {
+      commit('SET_TOKEN', res.data)
+      setToken(res.data)
     })
+    // const { username } = userInfo
+    // return new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     if (username === 'admin' || username === 'jerry') {
+    //       commit('SET_TOKEN', username)
+    //       setToken(username)
+    //       resolve()
+    //     } else {
+    //       reject(new Error('用户名或密码错误'))
+    //     }
+    //   }, 1000)
+    // })
   },
   getInfo ({ commit, state }) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const roles = state.token === 'admin' ? ['admin'] : ['editor']
-        commit('SET_ROLES', roles)
-        resolve({ roles })
-      }, 1000)
+    return getInfo(state.token).then(({data: roles}) => {
+      commit('SET_ROLES', roles)
+      return {roles}
     })
+    // return new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     const roles = state.token === 'admin' ? ['admin'] : ['editor']
+    //     commit('SET_ROLES', roles)
+    //     resolve({ roles })
+    //   }, 1000)
+    // })
   },
   // remove token
   resetToken ({ commit, state }) {

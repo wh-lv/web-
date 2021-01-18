@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "async-validator": "^3.5.1",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.0",
     "js-cookies": "^1.0.4",
