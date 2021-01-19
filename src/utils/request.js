@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
-import { getToken } from '@/util/auth'
+import { getToken } from '@/utils/auth'
 
 const service = axios.create({
-  baseUrl: process.env.VUE_APP_BASE_URL,
+  baseURL: process.env.VUE_APP_BASE_API,
   // withCredentials: true, // 跨域时如果要发送 cookies 开启此项
   timeout: 5000 // 超时
 })
@@ -12,6 +12,7 @@ const service = axios.create({
 // 请求拦截
 service.interceptors.request.use(
   config => {
+    console.log('request.js')
     if (store.getters.token) {
       config.headers.Authorization = 'Bearer ' + getToken()
     }

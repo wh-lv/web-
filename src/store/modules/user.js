@@ -38,9 +38,9 @@ const actions = {
     // })
   },
   getInfo ({ commit, state }) {
-    return getInfo(state.token).then(({data: roles}) => {
+    return getInfo(state.token).then(({ data: roles }) => {
       commit('SET_ROLES', roles)
-      return {roles}
+      return { roles }
     })
     // return new Promise((resolve, reject) => {
     //   setTimeout(() => {

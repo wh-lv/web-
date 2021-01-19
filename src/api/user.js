@@ -1,9 +1,10 @@
-import request from '@/util/request'
+import request from '@/utils/request'
 
 export function login (data) {
+  console.log('login')
   return request({
     url: '/user/login',
-    methods: 'post',
+    method: 'post',
     data
   })
 }
@@ -11,6 +12,6 @@ export function login (data) {
 export function getInfo () {
   return request({
     url: '/user/info',
-    methods: 'get'
+    method: 'get'
   })
 }
