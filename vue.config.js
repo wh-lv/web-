@@ -9,35 +9,44 @@ module.exports = {
   publicPath: '/best-practice',
   devServer: {
     port,
-    // 配置 mock 接口
-    before: app => { // app 是 express 的实例
-      app.use(bodyParser.json())
-      app.use(bodyParser.urlencoded({
-        extended: true
-      }))
-      app.post('/dev-api/user/login', (req, res) => {
-        const { username } = req.body
-        if (username === 'admin' || username === 'jerry') {
-          res.json({
-            code: 1,
-            data: username
-          })
-        } else {
-          res.json({
-            code: 10204,
-            message: '用户名或密码错误'
-          })
+    proxy: {
+      [process.env.VUE_APP_BASE_API]: {
+        target: 'http://127.0.0.1:3000/',
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_API]: ''
         }
-      })
-      app.get('/dev-api/user/info', (req, res) => {
-        const auth = req.headers['authorization']
-        const roles = auth.split(' ')[1] === 'admin' ? ['admin'] : ['editor']
-        res.json({
-          code: 1,
-          data: roles
-        })
-      })
+      }
     }
+    // // 配置 mock 接口
+    // before: app => { // app 是 express 的实例
+    //   app.use(bodyParser.json())
+    //   app.use(bodyParser.urlencoded({
+    //     extended: true
+    //   }))
+    //   app.post('/dev-api/user/login', (req, res) => {
+    //     const { username } = req.body
+    //     if (username === 'admin' || username === 'jerry') {
+    //       res.json({
+    //         code: 1,
+    //         data: username
+    //       })
+    //     } else {
+    //       res.json({
+    //         code: 10204,
+    //         message: '用户名或密码错误'
+    //       })
+    //     }
+    //   })
+    //   app.get('/dev-api/user/info', (req, res) => {
+    //     const auth = req.headers['authorization']
+    //     const roles = auth.split(' ')[1] === 'admin' ? ['admin'] : ['editor']
+    //     res.json({
+    //       code: 1,
+    //       data: roles
+    //     })
+    //   })
+    // }
   },
   configureWebpack: {
     name: title
